@@ -1,0 +1,12 @@
+header h1 {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+
+    padding: 15px !important;
+
+    background-color: #C3CFD9;
+
+    color: #E8833A;
+    font-size: 32px !important;
+}
