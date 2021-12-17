@@ -1,0 +1,8 @@
+.date-time {
+    display: flex;
+    gap: 0 10px;
+
+    margin-top: 22px;
+
+    flex-wrap: wrap;
+}

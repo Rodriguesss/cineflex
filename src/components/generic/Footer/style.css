@@ -1,0 +1,23 @@
+footer {
+    position: fixed;
+    bottom: 0;
+
+    background-color: #DFE6ED;
+
+    display: flex !important;
+    align-items: center !important;
+    gap: 0 20px !important;
+
+    width: 100%;
+
+    margin: 50px 0 0 0px !important;
+
+    padding: 20px !important;
+}
+
+
+footer div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px 0;
+}

@@ -1,23 +1,22 @@
-import Header from './Generic/Header/index'
-import Home from './Screen/Home/Index/index'
-import Container from './Generic/Container/index'
-import Session from './Screen/Session/Index/index'
+import Header from './generic/Header/index'
+import Home from './pages/home/Index/index'
+import Container from './generic/Container/index'
+import Session from './pages/session/Index/index'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 export default function App() {
     return (
         <>
-            <Header />
-            <Container>
-                <BrowserRouter>
+            <BrowserRouter>
+                <Header />
+                <Container>
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/session/:id" element={<Session />} />
                     </Routes>
-                </BrowserRouter>
-                <Home />
-            </Container>
+                </Container>
+            </BrowserRouter>
         </>
     )
 }

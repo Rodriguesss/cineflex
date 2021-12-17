@@ -1,5 +1,5 @@
-import PageTitle from '../../../Generic/PageTitle/index'
-import MovieList from '../MovieList/Index/index'
+import PageTitle from '../../../generic/PageTitle/index'
+import MovieList from '../MovieList/index'
 
 import './style.css'
 
