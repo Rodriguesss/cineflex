@@ -1,7 +1,7 @@
 import MovieDate from '../MovieDate/index'
 
 import './style.css'
-import MovieTime from '../MovieTime/Index'
+import MovieTime from '../MovieTime'
 
 export default function ScheduleItem({ weekday, date, showtimes }) {
     return (

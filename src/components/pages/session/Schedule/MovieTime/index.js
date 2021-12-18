@@ -1,5 +1,5 @@
-import Time from "../Time";
 import { Link } from "react-router-dom";
+import Button from "../../../../generic/Button";
 
 import './style.css'
 
@@ -8,7 +8,7 @@ export default function MovieTime({ showtimes }) {
         <div className="date-time">
             {showtimes.map(({ name, id }) => (
                 <Link to={`/assentos/${id}`}>
-                    <Time name={name} />
+                    <Button name={name} />
                 </Link>
             ))}
         </div>
