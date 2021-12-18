@@ -4,7 +4,7 @@ export default function FormContainer({children: [form, button]}) {
   return (
     <div className="form-container">
       {form}
-      <div class="button-container">
+      <div className="button-container">
       {button}
       </div>
       

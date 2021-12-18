@@ -1,9 +1,11 @@
 import './style.css'
 
-export default function Schedule({ children }) {
+import ScheduleItem from '../ScheduleItem'
+
+export default function Schedule({ data }) {
     return (
         <div className="schedule">
-            {children}
+            {data.days.map(({ weekday, date, showtimes, id }) => (<ScheduleItem key={id} weekday={weekday} date={date} showtimes={showtimes} />))}
         </div>
     )
 }

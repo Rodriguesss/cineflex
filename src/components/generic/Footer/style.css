@@ -4,6 +4,8 @@ footer {
 
     background-color: #DFE6ED;
 
+    color: #293845 !important;
+
     display: flex !important;
     align-items: center !important;
     gap: 0 20px !important;

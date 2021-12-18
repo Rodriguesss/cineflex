@@ -24,7 +24,7 @@ export default function MovieList() {
         ? (<p>Carregando</p>)
         : <div className="movie-container">
             {items.map(({ posterURL, title, id }) => (
-                <Link to={`/session/${id}`}>
+                <Link to={`/session/${id}`} key={id}>
                     <Movie url={posterURL} title={title} dimesion={dimesion} />
                 </Link>)
             )}

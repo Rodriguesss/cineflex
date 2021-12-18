@@ -5,7 +5,6 @@ import axios from 'axios'
 import PageTitle from '../../../generic/PageTitle/index'
 import Footer from '../../../generic/Footer/index'
 import Schedule from '../Schedule/Index/index'
-import ScheduleItem from '../Schedule/ScheduleItem/index'
 
 export default function Session() {
     const { id } = useParams()
@@ -17,17 +16,16 @@ export default function Session() {
 
     useEffect(() => {
         const request = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/movies/${id}/showtimes`)
-        request.then((response) => { setData(response.data) })
-    }, [])
+        request.then((response) => { setData(response.data)
+        console.log(response.data) })
+    }, [id])
 
     return data === null
         ? (<p>Carregando</p>)
         : (
             <>
                 <PageTitle title="Selecione o horário" />
-                <Schedule>
-                    {data.days.map(({ weekday, date, showtimes }) => (<ScheduleItem weekday={weekday} date={date} showtimes={showtimes} />))}
-                </Schedule>
+                <Schedule data={data} />
                 <Footer url={data.posterURL} title={data.title} seat={false} dimesion={dimesion} />
             </>
         )

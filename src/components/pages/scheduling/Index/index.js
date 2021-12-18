@@ -29,7 +29,7 @@ export default function Scheduling() {
     useEffect(() => {
         const request = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/showtimes/${id}/seats`)
         request.then((response) => { setData(response.data) })
-    }, [])
+    }, [id])
 
     function addZeroNumberToTheLeft(number) {
         return parseInt(number) < 10 ? `0${number}` : number
@@ -41,11 +41,11 @@ export default function Scheduling() {
             <div className="scheduling">
                 <PageTitle title="Selecione o(s) assento(s)" />
                 <Seat>
-                    {data.seats.map(({ name }) => (<SeatItem number={addZeroNumberToTheLeft(name)} css="default" />))}
+                    {data.seats.map(({ name, isAvailable }) => (<SeatItem key={name} number={addZeroNumberToTheLeft(name)} isAvailable={isAvailable} legend={false} />))}
                 </Seat>
                 <SeatDescription />
                 <FormContainer>
-                    {formData.map(({ label, placeholder }) => (<Form label={label} placeholder={placeholder} />))}
+                    {formData.map(({ label, placeholder }) => (<Form key={label} label={label} placeholder={placeholder} />))}
                     <Button name="Reservar assento(s)" />
                 </FormContainer>
                 <Footer url={data.movie.posterURL} title={data.movie.title} weekday={data.day.weekday} hour={data.name} seat={true} dimesion={dimesion} />

@@ -7,7 +7,7 @@ export default function MovieTime({ showtimes }) {
     return (
         <div className="date-time">
             {showtimes.map(({ name, id }) => (
-                <Link to={`/assentos/${id}`}>
+                <Link to={`/assentos/${id}`} key={id}>
                     <Button name={name} />
                 </Link>
             ))}
