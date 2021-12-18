@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 import './style.css'
 
-export default function MovieTime({ showtimes, setShowtime, id }) {
+export default function MovieTime({ showtimes }) {
     return (
         <div className="date-time">
-            {showtimes.map(({ name }) => (
+            {showtimes.map(({ name, id }) => (
                 <Link to={`/assentos/${id}`}>
-                    <Time name={name} setShowtime={setShowtime} />
+                    <Time name={name} />
                 </Link>
             ))}
         </div>

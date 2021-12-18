@@ -1,0 +1,55 @@
+.default {
+  background-color: #C3CFD9;
+
+  border: solid 1px #808F9D;
+  border-radius: 100%;
+
+  padding: 6px 5px;
+  margin: 5px;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.default-legend {
+  background-color: #C3CFD9;
+
+  border: solid 1px #808F9D;
+  border-radius: 100%;
+
+  padding: 11px 11px;
+  margin: 5px;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #8DD7CF;
+
+  border: solid 1px #1AAE9E;
+  border-radius: 100%;
+
+  padding: 11px 11px;
+  margin: 5px;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.unavailable {
+  background-color: #FBE192;
+
+  border: solid 1px #F7C52B;
+  border-radius: 100%;
+
+  padding: 11px 11px;
+  margin: 5px;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}

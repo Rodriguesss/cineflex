@@ -9,11 +9,7 @@ import ScheduleItem from '../Schedule/ScheduleItem/index'
 
 export default function Session() {
     const { id } = useParams()
-    const [schedules, setSchedules] = useState([])
-    const [posterURL, setPosterURL] = useState([])
-    const [showtime, setShowtime] = useState([])
-    const [weekday, setWeekday] = useState([])
-    const [title, setTitle] = useState([])
+    const [data, setData] = useState(null)
 
     const dimesion = [
         { width: "58", heigth: "82" }
@@ -21,24 +17,18 @@ export default function Session() {
 
     useEffect(() => {
         const request = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/movies/${id}/showtimes`)
-        request.then((response) => {
-            console.log(response)
-            setSchedules(response.data.days)
-            setPosterURL(response.data.posterURL)
-            setTitle(response.data.title)
-        })
+        request.then((response) => { setData(response.data) })
     }, [])
 
-    return schedules === null
+    return data === null
         ? (<p>Carregando</p>)
         : (
             <>
                 <PageTitle title="Selecione o horário" />
                 <Schedule>
-                    {schedules.map(({ id, weekday, date, showtimes }) => (<ScheduleItem weekday={weekday} date={date} showtimes={showtimes} setShowtime={setShowtime}
-                        setWeekday={setWeekday} id={id} />))}
+                    {data.days.map(({ weekday, date, showtimes }) => (<ScheduleItem weekday={weekday} date={date} showtimes={showtimes} />))}
                 </Schedule>
-                <Footer url={posterURL} title={title} weekday={weekday} hour={showtime} seat={false} dimesion={dimesion} />
+                <Footer url={data.posterURL} title={data.title} seat={false} dimesion={dimesion} />
             </>
         )
 }

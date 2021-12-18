@@ -1,7 +1,7 @@
 import './style.css'
 
-export default function Time({ name, setShowtime }) {
+export default function Time({ name }) {
     return (
-        <p className="time" onClick={() => {setShowtime(name)}}>{name}</p>
+        <p className="time">{name}</p>
     )
 }
