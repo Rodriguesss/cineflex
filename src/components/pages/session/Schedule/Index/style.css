@@ -1,13 +1,8 @@
 .schedule {
     display: flex;
     flex-direction: column;
-    gap: 15px 0;
 
     width: 90%;
 
-    margin-top: 67px;
-}
-
-.schedule:last-child {
-    margin-bottom: 120px;
+    margin-bottom: 50px;
 }
