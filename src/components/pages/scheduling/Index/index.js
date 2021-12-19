@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from "axios"
 
 import './style.css'
@@ -18,8 +18,8 @@ export default function Scheduling() {
     const [data, setData] = useState(null)
 
     const formData = [
-        { label: "Nome do comprador:", placeholder: "Digite seu nome..." },
-        { label: "CPF do computador:", placeholder: "Digite seu CPF..." }
+        { label: "Nome do comprador:", placeholder: "Digite seu nome...", cpf: false },
+        { label: "CPF do comprador:", placeholder: "Digite seu CPF...", cpf: true }
     ]
 
     const dimesion = [
@@ -45,8 +45,10 @@ export default function Scheduling() {
                 </Seat>
                 <SeatDescription />
                 <FormContainer>
-                    {formData.map(({ label, placeholder }) => (<Form key={label} label={label} placeholder={placeholder} />))}
-                    <Button name="Reservar assento(s)" />
+                    {formData.map(({ label, placeholder, cpf }) => (<Form key={label} label={label} placeholder={placeholder} cpf={cpf} />))}
+                    <Link to="/sucesso">
+                        <Button name="Reservar assento(s)" />
+                    </Link>
                 </FormContainer>
                 <Footer url={data.movie.posterURL} title={data.movie.title} weekday={data.day.weekday} hour={data.name} seat={true} dimesion={dimesion} />
             </div>

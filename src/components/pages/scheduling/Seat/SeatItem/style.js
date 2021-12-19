@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Number = styled.div`
+  ${(props) => {console.log('props', props)}}
   background-color: ${({css: {color}}) => color };
 
   border: solid 1px ${({css: {border}}) => border};
