@@ -62,4 +62,3 @@ export default function SeatItem({ id, number, color, isAvailable, legend, setAs
     <Number css={style} legend={legend} onClick={() => { clickedNumber(isAvailable) }}>{number}</Number>
   )
 }
-

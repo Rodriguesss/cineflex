@@ -50,19 +50,17 @@ export default function Scheduling({ setObjSucess }) {
     }
 
     function mountObjectAPI() {
-        objSucess = {
+        setObjSucess({
             response: data,
             seat: assentArrayNumber,
             person: { name: inputName, cpf: inputCPF },
-        }
+        })
 
         setObjAPI({
             ids: assentArray,
             name: inputName,
             cpf: inputCPF
         })
-
-        setObjSucess(objSucess)
     }
 
     return data === null
