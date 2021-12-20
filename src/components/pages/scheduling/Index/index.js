@@ -14,13 +14,16 @@ import SeatItem from "../Seat/SeatItem"
 import FormContainer from "../FormContainer"
 import SeatDescription from "../SeatDescription/Index"
 
-export default function Scheduling({ setIdSeat }) {
+export default function Scheduling({ setObjSucess }) {
+    let objSucess = {}
     const { id } = useParams()
     const [data, setData] = useState(null)
     const [objAPI, setObjAPI] = useState({})
     const [inputCPF, setInputCPF] = useState(null)
     const [inputName, setInputName] = useState(null)
     const [assentArray, setAssentArray] = useState([])
+    const [assentArrayNumber, setAssentArrayNumber] = useState([])
+
 
     const formData = [
         { label: "Nome do comprador:", placeholder: "Digite seu nome...", cpf: false },
@@ -34,11 +37,8 @@ export default function Scheduling({ setIdSeat }) {
     useEffect(() => {
         const request = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/showtimes/${id}/seats`)
         request.then((response) => {
-            console.log(response.data)
             setData(response.data)
         })
-
-        setIdSeat(id)
     }, [id])
 
     useEffect(() => {
@@ -50,12 +50,19 @@ export default function Scheduling({ setIdSeat }) {
     }
 
     function mountObjectAPI() {
+        objSucess = {
+            response: data,
+            seat: assentArrayNumber,
+            person: { name: inputName, cpf: inputCPF },
+        }
+
         setObjAPI({
             ids: assentArray,
             name: inputName,
             cpf: inputCPF
         })
-        console.log(objAPI)
+
+        setObjSucess(objSucess)
     }
 
     return data === null
@@ -64,7 +71,7 @@ export default function Scheduling({ setIdSeat }) {
             <div className="scheduling">
                 <PageTitle title="Selecione o(s) assento(s)" />
                 <Seat>
-                    {data.seats.map(({ id, name, isAvailable }) => (<SeatItem key={name} id={id} number={addZeroNumberToTheLeft(name)} isAvailable={isAvailable} legend={false} setAssentArray={setAssentArray} assentArray={assentArray} />))}
+                    {data.seats.map(({ id, name, isAvailable }) => (<SeatItem key={name} id={id} number={addZeroNumberToTheLeft(name)} isAvailable={isAvailable} legend={false} setAssentArray={setAssentArray} assentArray={assentArray} assentArrayNumber={assentArrayNumber} setAssentArrayNumber={setAssentArrayNumber} />))}
                 </Seat>
                 <SeatDescription />
                 <FormContainer>

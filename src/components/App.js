@@ -9,7 +9,7 @@ import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 export default function App() {
-    const [idSeat, setIdSeat] = useState(null)
+    const [objSucess, setObjSucess] = useState({})
 
     return (
         <>
@@ -19,8 +19,8 @@ export default function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/session/:id" element={<Session />} />
-                        <Route path="/assentos/:id" element={<Scheduling setIdSeat={setIdSeat} />} />
-                        <Route path="/sucesso" element={<Receipt objAPI={idSeat} />} />
+                        <Route path="/assentos/:id" element={<Scheduling setObjSucess={setObjSucess} />} />
+                        <Route path="/sucesso" element={<Receipt objSucess={objSucess} />} />
                     </Routes>
                 </Container>
             </BrowserRouter>

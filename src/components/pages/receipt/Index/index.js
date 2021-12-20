@@ -1,19 +1,26 @@
-import { Link, useParams } from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 import Info from '../Info/index'
 import Button from '../../../generic/Button'
-
 import { Title, ContainerButton } from './style'
+import { useEffect } from 'react'
+import { useState } from 'react/cjs/react.development'
 
-export default function Receipt(props) {
-  const params = useParams();
-  console.log(params)
+export default function Receipt({ objSucess: { response, seat, person: { name, cpf } } }) {
+  const [obj, setObj] = useState([])
+
+  useEffect(() => {
+    setObj([
+      { title: 'Filme e sessão', data: [response.movie.title, `${response.day.date} ${response.name}`] },
+      { title: 'Ingressos', data: seat },
+      { title: 'Comprador', data: [`Nome: ${name}`, `CPF: ${cpf}`] }
+    ])
+  }, [])
+
   return (
     <>
       <Title>Pedido feito com sucesso!</Title>
-      <Info title="Filme e sessões" item1="Enola Holmes" item2="24/06/2021 15:00" />
-      <Info title="Ingressos" item1="Assento 15" item2="Assento 16" />
-      <Info title="Comprador" item1="Nome: João da Silva Sauro" item2="CPF: 123.456.789-10" />
+      {obj.map(({ title, data }) => <Info key={title} title={title} data={data} />)}
+
       <ContainerButton>
         <Link to="/">
           <Button name="Voltar pra Home" />

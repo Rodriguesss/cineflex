@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Number } from './style'
 
-export default function SeatItem({ id, number, color, isAvailable, legend, setAssentArray, assentArray }) {
+export default function SeatItem({ id, number, color, isAvailable, legend, setAssentArray, assentArray, assentArrayNumber, setAssentArrayNumber }) {
   useEffect(() => {
     setColor()
   }, [])
@@ -44,12 +44,18 @@ export default function SeatItem({ id, number, color, isAvailable, legend, setAs
 
   function setDefaultColor() {
     setStyle(css['defaultColorCss'])
-    setAssentArray(assentArray.filter(n => n !== id).sort())
+    setAssentArray(arrayFilter(assentArray, id))
+    setAssentArrayNumber(arrayFilter(assentArrayNumber, number))
   }
 
   function setSelectedColor() {
     setStyle(css['selectedColorCss'])
     setAssentArray(oldArray => [...oldArray, id].sort())
+    setAssentArrayNumber(oldArray => [...oldArray, number].sort())
+  }
+
+  function arrayFilter(array, params) {
+    return array.filter(item => item !== params).sort()
   }
 
   return (
