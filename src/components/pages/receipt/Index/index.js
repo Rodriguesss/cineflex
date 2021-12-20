@@ -1,11 +1,13 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import Info from '../Info/index'
 import Button from '../../../generic/Button'
 
 import { Title, ContainerButton } from './style'
 
-export default function Receipt() {
+export default function Receipt(props) {
+  const params = useParams();
+  console.log(params)
   return (
     <>
       <Title>Pedido feito com sucesso!</Title>

@@ -16,8 +16,7 @@ export default function Session() {
 
     useEffect(() => {
         const request = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/movies/${id}/showtimes`)
-        request.then((response) => { setData(response.data)
-        console.log(response.data) })
+        request.then((response) => { setData(response.data) })
     }, [id])
 
     return data === null

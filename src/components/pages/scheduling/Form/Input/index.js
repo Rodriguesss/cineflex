@@ -1,19 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import './style.css'
 
 import { cpfMask } from '../../../../../utils/mask'
 
-export default function Input({ placeholder, cpf }) {
-  const [documentId, setDocumentId] = useState([])
+export default function Input({ placeholder, cpf, setInputName, setInputCPF }) {
+  const [data, setData] = useState([])
 
-  function handleChange(e) {
-    cpf 
-    ? setDocumentId(cpfMask(e.target.value))
-    : setDocumentId(e.target.value)
+  function handleChange({target: {value}}) {
+    cpf ? setCPF(value) : setName(value) 
+  }
+
+  function setName(value) {
+    setData(value)
+    setInputName(value)
+  }
+
+  function setCPF(value) {
+    setData(cpfMask(value))
+    setInputCPF(value)
   }
 
   return (
-    <input className="input" type="text" placeholder={placeholder} maxLength={cpf ? `14` : `30`} value={documentId} onChange={handleChange} />
+    <input className="input" type="text" placeholder={placeholder} maxLength={cpf ? `14` : `30`} value={data} onChange={handleChange} />
   )
 }

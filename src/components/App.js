@@ -5,9 +5,12 @@ import Session from './pages/session/Index'
 import Receipt from './pages/receipt/Index'
 import Scheduling from './pages/scheduling/Index'
 
+import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 export default function App() {
+    const [idSeat, setIdSeat] = useState(null)
+
     return (
         <>
             <BrowserRouter>
@@ -16,8 +19,8 @@ export default function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/session/:id" element={<Session />} />
-                        <Route path="/assentos/:id" element={<Scheduling />} />
-                        <Route path="/sucesso" element={<Receipt />} />
+                        <Route path="/assentos/:id" element={<Scheduling setIdSeat={setIdSeat} />} />
+                        <Route path="/sucesso" element={<Receipt objAPI={idSeat} />} />
                     </Routes>
                 </Container>
             </BrowserRouter>

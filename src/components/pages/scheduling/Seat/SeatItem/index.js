@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Number } from './style'
 
-export default function SeatItem({ number, color, isAvailable, legend }) {
-
+export default function SeatItem({ id, number, color, isAvailable, legend, setAssentArray, assentArray }) {
   useEffect(() => {
     setColor()
   }, [])
@@ -13,13 +12,13 @@ export default function SeatItem({ number, color, isAvailable, legend }) {
     unavailableColorCss: { color: '#FBE192', border: '#F7C52B' }
   }
 
-  const [condition, setCondition] = useState(false)
+  const [click, setClick] = useState(false)
   const [style, setStyle] = useState({ color: '#FBE192', border: '#F7C52B' })
 
   function setColor(trigger) {
     if (trigger) {
-      condition ? setStyle(css['defaultColorCss']) : setStyle(css['selectedColorCss'])
-      setCondition(!condition)
+      click ? setDefaultColor() : setSelectedColor()
+      setClick(!click)
       return style
     }
 
@@ -28,6 +27,10 @@ export default function SeatItem({ number, color, isAvailable, legend }) {
   }
 
   function clickedNumber(isAvailable) {
+    handleIdentifyAvailable(isAvailable)
+  }
+
+  function handleIdentifyAvailable(isAvailable) {
     isAvailable ? setColor(true) : alert('Esse assento não está disponível')
   }
 
@@ -37,6 +40,16 @@ export default function SeatItem({ number, color, isAvailable, legend }) {
 
   function handleDefaultColor() {
     isAvailable && setStyle(css['defaultColorCss'])
+  }
+
+  function setDefaultColor() {
+    setStyle(css['defaultColorCss'])
+    setAssentArray(assentArray.filter(n => n !== id).sort())
+  }
+
+  function setSelectedColor() {
+    setStyle(css['selectedColorCss'])
+    setAssentArray(oldArray => [...oldArray, id].sort())
   }
 
   return (
