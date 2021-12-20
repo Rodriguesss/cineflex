@@ -15,7 +15,6 @@ import FormContainer from "../FormContainer"
 import SeatDescription from "../SeatDescription/Index"
 
 export default function Scheduling({ setObjSucess }) {
-    let objSucess = {}
     const { id } = useParams()
     const [data, setData] = useState(null)
     const [objAPI, setObjAPI] = useState({})
@@ -43,7 +42,8 @@ export default function Scheduling({ setObjSucess }) {
 
     useEffect(() => {
         mountObjectAPI()
-    }, [inputCPF, inputName, assentArray])
+        // eslint-disable-next-line
+    }, [inputCPF, inputName, assentArray, assentArrayNumber])
 
     function addZeroNumberToTheLeft(number) {
         return parseInt(number) < 10 ? `0${number}` : number

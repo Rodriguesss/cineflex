@@ -4,6 +4,7 @@ import { Number } from './style'
 export default function SeatItem({ id, number, color, isAvailable, legend, setAssentArray, assentArray, assentArrayNumber, setAssentArrayNumber }) {
   useEffect(() => {
     setColor()
+    // eslint-disable-next-line
   }, [])
 
   const css = {

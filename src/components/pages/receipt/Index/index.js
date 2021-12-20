@@ -14,7 +14,7 @@ export default function Receipt({ objSucess: { response, seat, person: { name, c
       { title: 'Ingressos', data: seat },
       { title: 'Comprador', data: [`Nome: ${name}`, `CPF: ${cpf}`] }
     ])
-  }, [])
+  }, [response, cpf, name, seat])
 
   return (
     <>
