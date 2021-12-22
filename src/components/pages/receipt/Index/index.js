@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+
 import Info from '../Info/index'
 import Button from '../../../generic/Button'
 import { Title, ContainerButton } from './style'
-import { useEffect } from 'react'
-import { useState } from 'react/cjs/react.development'
 
 export default function Receipt({ objSucess: { response, seat, person: { name, cpf } } }) {
+  console.log('entrei')
   const [obj, setObj] = useState([])
 
   useEffect(() => {
