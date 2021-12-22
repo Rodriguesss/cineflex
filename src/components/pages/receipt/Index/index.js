@@ -6,7 +6,6 @@ import Button from '../../../generic/Button'
 import { Title, ContainerButton } from './style'
 
 export default function Receipt({ objSucess: { response, seat, person: { name, cpf } } }) {
-  console.log('entrei')
   const [obj, setObj] = useState([])
 
   useEffect(() => {
