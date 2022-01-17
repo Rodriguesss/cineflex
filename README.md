@@ -1,6 +1,6 @@
 # Cineflex
 
-Um projeto para gerenciar assentos de cinema utilizando o framework React e as tecnologias axios e react-router-dom para consumo da API e gerenciamento das páginas através de rotas.
+Um projeto para gerenciar assentos de cinema utilizando a biblioteca React e as tecnologias axios e react-router-dom para consumo da API e gerenciamento das páginas através de rotas.
 
 
 ## Rodar projeto
